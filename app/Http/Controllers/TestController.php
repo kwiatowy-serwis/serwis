@@ -13,7 +13,7 @@ class TestController extends Controller
      */
     public function index()
     {
-		die('index');
+		
     }
 
     /**
