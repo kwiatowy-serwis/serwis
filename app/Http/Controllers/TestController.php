@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Connections\HttpClient;
+use App\Services\Kwiaciarnia;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -13,7 +15,11 @@ class TestController extends Controller
      */
     public function index()
     {
-		
+        $rzeszow = new Kwiaciarnia\Rzeszow();
+        $rzeszowData = $rzeszow->pobierzDane();
+
+        return $rzeszowData;
+
     }
 
     /**
@@ -23,7 +29,7 @@ class TestController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
