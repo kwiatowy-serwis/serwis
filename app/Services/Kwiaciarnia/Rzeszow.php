@@ -11,7 +11,8 @@ use App\Services\Kwiaciarnia\Interfaces\Kwiaciarnia;
  */
 class Rzeszow extends KwiaciarniaBase implements Kwiaciarnia
 {
-    private $url = 'http://kwiaciarnia-rzeszow.test/';
+//    private $url = 'http://kwiaciarnia-rzeszow.test/';
+    private $url = 'http://192.168.56.103/kwiaciarnia-rzeszow/public/';
 
     public function pobierzDane ()
     {
