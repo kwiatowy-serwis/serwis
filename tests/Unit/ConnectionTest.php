@@ -14,13 +14,13 @@ class ConnectionTest extends TestCase
      *
      * @return void
      */
-    public function testConnectionKwiaciarniaRzeszow()
-    {
-        $kwiaciarniaReszow = new Rzeszow();
-        $kwiaciarniaReszow->pobierzDane();
-
-        $this->assertEquals(200, $kwiaciarniaReszow->getClient()->getStatusCode());
-    }
+//    public function testConnectionKwiaciarniaRzeszow()
+//    {
+//        $kwiaciarniaReszow = new Rzeszow();
+//        $kwiaciarniaReszow->pobierzDane();
+//
+//        $this->assertEquals(200, $kwiaciarniaReszow->getClient()->getStatusCode());
+//    }
 
 
 
