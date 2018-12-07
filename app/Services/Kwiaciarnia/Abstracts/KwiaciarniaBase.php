@@ -24,4 +24,9 @@ abstract class KwiaciarniaBase
         $response = json_decode($response);
         return $response->data;
     }
+
+    public function getClient()
+    {
+        return $this->client;
+    }
 }
