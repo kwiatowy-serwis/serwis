@@ -14,6 +14,11 @@ class ConnectionTest extends TestCase
      *
      * @return void
      */
+    public function testToTestTrue()
+    {
+        $this->assertTrue(true);
+    }
+
 //    public function testConnectionKwiaciarniaRzeszow()
 //    {
 //        $kwiaciarniaReszow = new Rzeszow();
