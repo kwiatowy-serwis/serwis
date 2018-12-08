@@ -22,7 +22,7 @@ node('master'){
    stage('coverage-html'){
    		step([
    		 $class: 'CloverPublisher',
-   		 cloverReportDir: 'reports/html',
+   		 cloverReportDir: 'reports/html/coverage',
    		 cloverReportFileName: 'index.html',
    		 cloverReportDir: 'reports/coverage',
          cloverReportFileName: 'coverage',
