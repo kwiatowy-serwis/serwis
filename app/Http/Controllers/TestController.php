@@ -20,7 +20,6 @@ class TestController extends Controller
 
 
         return $rzeszowData;
-
     }
 
     /**
