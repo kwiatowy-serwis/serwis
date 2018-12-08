@@ -12,7 +12,7 @@ node('master'){
         }
 
 	stage('test'){
-		sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html reports/coverage --coverage-clover reports/coverage';
+		sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html reports/html --coverage-clover reports/coverage';
 	}
 	
 	stage('xunit'){
@@ -22,7 +22,7 @@ node('master'){
    stage('coverage-html'){
    		step([
    		 $class: 'CloverPublisher',
-   		 cloverReportDir: 'reports/html/coverage',
+   		 cloverReportDir: 'reports/html',
    		 cloverReportFileName: 'index.html',
    		 cloverReportDir: 'reports/coverage',
          cloverReportFileName: 'coverage',
