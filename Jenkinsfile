@@ -14,10 +14,10 @@ node('master'){
 	stage('test'){
 	    def workspace = pwd()
 	    if(isUnix()){
-	        sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html ${workspace}/clover --coverage-clover reports/coverage';
+	        sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html "${workspace}/clover" --coverage-clover reports/coverage';
         }
         else{
-            sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html ${workspace}/clover --coverage-clover reports/coverage';
+            sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html "workspace/clover" --coverage-clover reports/coverage';
 
         }
 
