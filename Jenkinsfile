@@ -13,6 +13,7 @@ node('master'){
 
 	stage('test'){
 		sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html reports/html/coverage --coverage-clover reports/coverage';
+		sh 'publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'reports/html/coverage', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])'
 	}
 	
 	stage('xunit'){
