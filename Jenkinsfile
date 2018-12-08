@@ -12,7 +12,15 @@ node('master'){
         }
 
 	stage('test'){
-		sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html clover --coverage-clover reports/coverage';
+	    def workspace = pwd()
+	    if(isUnix()){
+	        sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html ${workspace}/clover --coverage-clover reports/coverage';
+        }
+        else{
+            sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html ${workspace}/clover --coverage-clover reports/coverage';
+
+        }
+
 	}
 	
 	stage('xunit'){
