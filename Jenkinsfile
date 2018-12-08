@@ -23,7 +23,12 @@ node('master'){
    		step([
    		 $class: 'CloverPublisher',
    		 cloverReportDir: 'reports/html/coverage',
-   		 cloverReportFileName: 'index.html'
+   		 cloverReportFileName: 'index.html',
+   		 cloverReportDir: 'reports/coverage',
+         cloverReportFileName: 'coverage',
+   		 healthyTarget: [methodCoverage: 10, conditionalCoverage: 10, statementCoverage: 10],
+         unhealthyTarget: [methodCoverage: 5, conditionalCoverage: 5, statementCoverage: 5],
+         failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
    			])
    	}
 
