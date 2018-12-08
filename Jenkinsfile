@@ -24,9 +24,6 @@ node('master'){
    		 $class: 'CloverPublisher',
    		 cloverReportDir: 'reports/html/coverage',
    		 cloverReportFileName: 'index.html'
-   		 healthyTarget: [methodCoverage: 70, conditionalCoverage: 70, statementCoverage: 70],
-         unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50], // optional, default is none
-         failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
    			])
    	}
 
