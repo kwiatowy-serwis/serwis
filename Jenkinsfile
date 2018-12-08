@@ -19,17 +19,6 @@ node('master'){
 		junit 'reports/xunit';
 	}
 
-	stage('coverage'){
-		step([
-		 $class: 'CloverPublisher',
-		 cloverReportDir: 'reports',
-		 cloverReportFileName: 'coverage',
-		 healthyTarget: [methodCoverage: 10, conditionalCoverage: 10, statementCoverage: 10],
-		 unhealthyTarget: [methodCoverage: 5, conditionalCoverage: 5, statementCoverage: 5],
-		 failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
-			])
-	}
-
 	stage('deploy') {
 		    sh 'sudo rm -fr /home/student/projekty/serwis/*'
 			sh 'sudo cp -ar ./. /home/student/projekty/serwis'
