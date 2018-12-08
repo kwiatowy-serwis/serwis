@@ -12,31 +12,23 @@ node('master'){
         }
 
 	stage('test'){
-	    def workspace = pwd()
-	    if(isUnix()){
-	        sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html "${workspace}/clover" --coverage-clover reports/coverage';
-        }
-        else{
-            sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html "workspace/clover" --coverage-clover reports/coverage';
-
-        }
-
+		sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html reports/html --coverage-clover reports/coverage';
 	}
-	
+
 	stage('xunit'){
 		junit 'reports/xunit';
 	}
 
-	stage('coverage'){
-		step([
-		 $class: 'CloverPublisher',
-		 cloverReportDir: 'reports',
-		 cloverReportFileName: 'coverage',
-		 healthyTarget: [methodCoverage: 10, conditionalCoverage: 10, statementCoverage: 10],
-		 unhealthyTarget: [methodCoverage: 5, conditionalCoverage: 5, statementCoverage: 5],
-		 failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
-			])
-	}
+   stage('coverage-html'){
+   		step([
+        		 $class: 'CloverPublisher',
+        		 cloverReportDir: 'reports',
+        		 cloverReportFileName: 'coverage',
+        		 healthyTarget: [methodCoverage: 10, conditionalCoverage: 10, statementCoverage: 10],
+        		 unhealthyTarget: [methodCoverage: 5, conditionalCoverage: 5, statementCoverage: 5],
+        		 failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
+        			])
+   	}
 
 	stage('deploy') {
 		    sh 'sudo rm -fr /home/student/projekty/serwis/*'
@@ -49,4 +41,3 @@ node('master'){
 
 	}
 }
-
