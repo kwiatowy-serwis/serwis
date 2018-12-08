@@ -12,7 +12,7 @@ node('master'){
         }
 
 	stage('test'){
-		sh './vendor/bin/phpunit --log-junit reports/xunit.xml --coverage-html reports/coverage --coverage-clover reports/coverage';
+		sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html reports/coverage --coverage-clover reports/coverage';
 	}
 	
 	stage('xunit'){
