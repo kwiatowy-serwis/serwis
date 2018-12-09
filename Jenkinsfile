@@ -14,7 +14,7 @@ node('master'){
 	stage('test'){
 		sh './vendor/bin/phpunit --log-junit reports/xunit --coverage-html reports/html --coverage-clover reports/coverage';
 	}
-	
+
 	stage('xunit'){
 		junit 'reports/xunit';
 	}
@@ -41,4 +41,3 @@ node('master'){
 
 	}
 }
-
