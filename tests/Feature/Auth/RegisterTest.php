@@ -42,9 +42,11 @@ class RegisterTest extends TestCase
         $name = 'testname';
         $email = 'test@email.com';
         $password = 'securePassword';
+        $surname = 'testsurname';
 
         $response = $this->from($this->getRegisterRoute())->post($this->getRegisterRoute(),[
             'name' => $name,
+            'surname' => $surname,
             'email' => $email,
             'password' => $password,
             'password_confirmation' => $password
