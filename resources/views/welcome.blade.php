@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
+        <link href="https://fonts.googleapis.com/css?family=Yatra+One" rel="stylesheet">
         <!-- Style -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -65,10 +65,10 @@
         </div>
     </nav>
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Album example</h1>
-            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+    <section class="jumbotron text-center banner-jumbotron">
+        <div class="container container-custom">
+            <h1 class="jumbotron-heading-custom">Serwis Kwiatowy</h1>
+            <p class="text-muted-custom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin orci arcu, semper sit amet massa id, iaculis consequat justo. Aliquam tempus, turpis a sagittis accumsan, elit quam ullamcorper sem, eget.</p>
 
         </div>
     </section>

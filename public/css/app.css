@@ -10482,7 +10482,24 @@ a.text-dark:focus {
   text-decoration: none;
 }
 
-.jumbotron {
-  background: url("/./resources/images/banner.jpg") no-repeat center center;
+.banner-jumbotron {
+  height: 600px;
+  background-image: url("/images/jumbotron.jpg");
+  background-size: cover;
+}
+
+.container-custom {
+  color: #000000;
+  padding: 50px;
+  font-family: 'Yatra One', cursive;
+}
+
+.text-muted-custom {
+  color: #000000;
+  font-size: 30px;
+}
+
+.jumbotron-heading-custom {
+  font-size: 70px;
 }
 

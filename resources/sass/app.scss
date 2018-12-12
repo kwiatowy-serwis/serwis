@@ -21,3 +21,25 @@
   color: rgba(0, 0, 0, 0.7);
   text-decoration: none;
 }
+
+.banner-jumbotron{
+  height: 600px;
+  background-image: url("/images/jumbotron.jpg");
+  background-size: cover;
+}
+
+.container-custom{
+  color: #000000;
+  padding: 50px;
+  font-family: 'Yatra One', cursive;
+}
+
+.text-muted-custom{
+  color: #000000;
+  font-size: 30px;
+}
+
+.jumbotron-heading-custom{
+  font-size: 70px;
+}
+
