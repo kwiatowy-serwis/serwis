@@ -38,15 +38,15 @@ class DataManager
         return $out;
     }
 
-    private function isFlowerExist($flower, $flowers)
-    {
-        foreach ($flowers as $f)
-        {
-            if($f->name == $flower)
-            {
+
+    private function isFlowerExist($flower, $flowers){
+
+        foreach ($flowers as $ex){
+            if($ex->name == ucfirst($flower))
                 return true;
-            }
         }
         return false;
+
     }
+
 }
