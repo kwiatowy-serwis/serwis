@@ -75,7 +75,7 @@
     <div class="container container-custom-main">
 
         <div class="row">
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-2 col-md-4">
                 <div class="thumbnail">
                     <img src="/images/banner.jpg" alt="roza" width="200px" height="200px">
                     <div class="caption">
@@ -85,11 +85,11 @@
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
+
+
+            <div class="col-sm-2 col-md-4">
                 <div class="thumbnail">
                     <img src="/images/banner.jpg" alt="roza" width="200px" height="200px">
                     <div class="caption">
@@ -99,10 +99,10 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
+
+
+            <div class="col-sm-2 col-md-4">
                 <div class="thumbnail">
                     <img src="/images/banner.jpg" alt="roza" width="200px" height="200px">
                     <div class="caption">
@@ -112,8 +112,9 @@
                     </div>
                 </div>
             </div>
-        </div>
 
+
+    </div>
     </div>
 
     </body>
