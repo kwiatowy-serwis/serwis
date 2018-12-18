@@ -23,6 +23,12 @@ class DataManager
             {
                 continue;
             }
+
+            if($this->isFlowerExist($flowerDetails->name, $out))
+            {
+                continue;
+            }
+
             $flowerDetails->flowerImage = asset(sprintf($path, $flowerDetails->name));
             $flowerDetails->name = ucfirst($flowerDetails->name);
             $out[] = $flowerDetails;
@@ -30,5 +36,17 @@ class DataManager
         }
 
         return $out;
+    }
+
+    private function isFlowerExist($flower, $flowers)
+    {
+        foreach ($flowers as $f)
+        {
+            if($f->name == $flower)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

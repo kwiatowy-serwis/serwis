@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-                <img src="{{$flower->flowerImage}}" alt="roza" width="200px" height="200px">
+                <img src="{{$flower->flowerImage}}" alt="{{$flower->name}}" width="200px" height="200px">
                 <div class="caption">
                     <h3>{{$flower->name}}</h3>
                     <p>Count: {{$flower->quantity}}</p>
