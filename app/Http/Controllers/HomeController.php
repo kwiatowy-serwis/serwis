@@ -47,6 +47,9 @@ class HomeController extends Controller
 
         }
 
+        dump($out);
+        die;
+
         return view('home', [
             'flowers' => $out
         ]);

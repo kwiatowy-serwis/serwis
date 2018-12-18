@@ -74,45 +74,36 @@
 
     <div class="container container-custom-main">
 
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="/images/banner.jpg" alt="roza" width="200px" height="200px">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>Count:</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        @yield('content')
 
 
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="/images/banner.jpg" alt="roza" width="200px" height="200px">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>Count:</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="/images/banner.jpg" alt="roza" width="200px" height="200px">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>Count:</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{--<div class="row">--}}
+            {{--<div class="col-sm-6 col-md-4">--}}
+                {{--<div class="thumbnail">--}}
+                    {{--<img src="/images/banner.jpg" alt="roza" width="200px" height="200px">--}}
+                    {{--<div class="caption">--}}
+                        {{--<h3>Thumbnail label</h3>--}}
+                        {{--<p>Count:</p>--}}
+                        {{--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+
+        {{--<div class="row">--}}
+            {{--<div class="col-sm-6 col-md-4">--}}
+                {{--<div class="thumbnail">--}}
+                    {{--<img src="/images/banner.jpg" alt="roza" width="200px" height="200px">--}}
+                    {{--<div class="caption">--}}
+                        {{--<h3>Thumbnail label</h3>--}}
+                        {{--<p>Count:</p>--}}
+                        {{--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
     </div>
 
