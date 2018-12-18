@@ -12,9 +12,6 @@ class MainController extends Controller
         $dataManager = new DataManager();
         $flowers = $dataManager->getRzeszowFlowers();
 
-        dump($flowers);
-        die;
-
         return view('main', [
             'flowers' => $flowers
         ]);
