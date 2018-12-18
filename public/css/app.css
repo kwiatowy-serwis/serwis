@@ -10493,7 +10493,6 @@ a.text-dark:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: red;
   margin-left: 10px;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -10510,5 +10509,13 @@ a.text-dark:focus {
     display: flex;
     width: 100%;
   }
+}
+
+.container-custom-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 

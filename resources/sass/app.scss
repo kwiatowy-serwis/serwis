@@ -31,7 +31,6 @@
 .container-custom{
   width: 700px;
   display: flex;
-  background-color: red;
   margin-left: 10px;
   justify-content: flex-start;
   color: #FFF;
@@ -47,6 +46,10 @@
   }
 }
 
+.container-custom-main{
+  display: flex;
+  justify-content: space-around;
+}
 
 
 
