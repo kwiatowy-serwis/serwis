@@ -10,13 +10,7 @@ class Kwiaciarnia extends Controller
 
     public function flowerRze()
     {
-        $rzeszow = new KwiaciarniaAPI\Rzeszow();
-        $rzeszowData = $rzeszow->pobierzDane();
 
-        dump($rzeszowData);
-        die;
-
-        return $rzeszowData;
     }
 
     /**
