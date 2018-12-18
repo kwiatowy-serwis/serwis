@@ -68,7 +68,6 @@
     <section class="jumbotron text-center banner-jumbotron">
         <div class="container container-custom">
             <h1 class="jumbotron-heading-custom">Serwis Kwiatowy</h1>
-            <p class="text-muted-custom">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin orci arcu, semper sit amet massa id, iaculis consequat justo. Aliquam tempus, turpis a sagittis accumsan, elit quam ullamcorper sem, eget.</p>
 
         </div>
     </section>
