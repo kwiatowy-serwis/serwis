@@ -9,6 +9,7 @@ class MainController extends Controller
 {
     public function index()
     {
+
         $dataManager = new DataManager();
         $flowers = $dataManager->getRzeszowFlowers();
 
