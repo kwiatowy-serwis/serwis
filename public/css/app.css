@@ -10493,7 +10493,6 @@ body {
 }
 
 .container-custom {
-  width: 700px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10506,7 +10505,7 @@ body {
   font-family: 'Yatra One', cursive;
 }
 
-@media (max-width: 776px) {
+@media (max-width: 700px) {
   .container-custom {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -10516,15 +10515,16 @@ body {
   }
 
   .jumbotron-heading-custom {
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    font-size: 5px;
-    color: green;
   }
 
   .container-custom-main {
@@ -10538,6 +10538,7 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    background-color: red;
   }
 }
 
@@ -10547,11 +10548,10 @@ body {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin: 0 auto;
 }
 
 .jumbotron-heading-custom {
-  font-size: 70px;
+  font-size: 9vh;
 }
 
 .thumbnail-custom {
