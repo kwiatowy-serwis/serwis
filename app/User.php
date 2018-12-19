@@ -6,6 +6,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @property mixed isAdmin
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'surname', 'email', 'password',
+        'name', 'surname', 'email', 'password','isAdmin',
     ];
 
     /**
@@ -25,6 +28,19 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','isAdmin',
+        'password', 'remember_token',
     ];
-}
+
+
+    public function admin(){
+        if($this->isAdmin==1){
+
+            return true;
+
+        }
+
+        return false;
+
+    }
+    }
+

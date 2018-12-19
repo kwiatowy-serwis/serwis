@@ -11,23 +11,44 @@
 |
 */
 
-Route::get('/', 'MainController@index');
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-/*
-Route::get('/test', function () {
-    return view('TestController@index');
-});
-*/
 
-Route::get('/test', 'TestController@index');
+
 
 Auth::routes();
+Route::get('/', 'MainController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['web', 'auth']], function (){
+
+    if(Auth::user()->isAdmin==0) {
+        Route::get('/home', 'HomeController@index')->name('home');
+    }else{
+        Route::get('/admin', 'AdminController@index')->name('admin');
+    }
+
+});
+
+/*
+Route::get('/home', function (){
+    if(Auth::user()->isAdmin==0){
+
+
+        return view('home');
+
+    }else{
+        return view('admin.index');
+    }
+})->name('home');
+*/
+
 
 Route::get('/order', 'OrderController@index')->name('order');
+
+
+//Route::group(['middleware'=>'admin'], function(){
+//    return view('admin.index')->name('dashboard');
+//});
+
+//Route::get('/admin', 'HomeCon@index')->middleware('admin');
 
 
 
