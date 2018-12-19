@@ -41,15 +41,15 @@ class LoginController extends Controller
     }
 
 
-    public function index()
-    {
-
-//        $user = User::find($userId);
-
-        if($user->admin == 1)
-        {
-            return view('admin');
-        }
-        return view('home');
-    }
+//    public function index()
+//    {
+//
+////        $user = User::find($userId);
+//
+////        if($user->admin == 1)
+////        {
+////            return view('admin');
+////        }
+//        return view('home');
+//    }
 }

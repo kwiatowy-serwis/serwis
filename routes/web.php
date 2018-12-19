@@ -28,7 +28,16 @@ Route::get('/', 'MainController@index');
 //
 //});
 
-Route::get('/admin', 'AdminController@index')->name('admin');
+Route::group(['middleware' => ['auth', 'admin']], function (){
+
+
+    Route::get('/admin', function (){
+      return view('admin.index');
+    })->name('admin');
+
+});
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 

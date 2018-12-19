@@ -32,15 +32,11 @@ class User extends Authenticatable
     ];
 
 
-    public function admin(){
-        if($this->isAdmin==1){
+    public function isAdmin(){
 
-            return true;
+
+        return $this->isAdmin;
 
         }
-
-        return false;
-
-    }
     }
 

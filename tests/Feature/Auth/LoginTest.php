@@ -91,7 +91,7 @@ class LoginTest extends TestCase
 
     public function testUserCanLogout()
     {
-        $this->be(factory(User::class)->create());
+        $this->actingAs(factory(User::class)->create());
         $response = $this->post('/logout');
         $response->assertRedirect('/');
         $this->assertGuest();
@@ -99,6 +99,7 @@ class LoginTest extends TestCase
 
     public function testUserCannotLogoutWhenAuthenticated()
     {
+
         $response = $this->post('/logout');
         $response->assertRedirect('/');
         $this->assertGuest();
