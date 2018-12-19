@@ -39,4 +39,17 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    public function index()
+    {
+
+//        $user = User::find($userId);
+
+        if($user->admin == 1)
+        {
+            return view('admin');
+        }
+        return view('home');
+    }
 }

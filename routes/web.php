@@ -17,15 +17,20 @@
 Auth::routes();
 Route::get('/', 'MainController@index');
 
-Route::group(['middleware' => ['web', 'auth']], function (){
 
-    if(Auth::user()->isAdmin==0) {
-        Route::get('/home', 'HomeController@index')->name('home');
-    }else{
-        Route::get('/admin', 'AdminController@index')->name('admin');
-    }
+//Route::group(['middleware' => ['web', 'auth','admin']], function (){
+//
+//
+//        Route::get('/home', 'HomeController@index')->name('home');
+//
+//        Route::get('/admin', 'AdminController@index')->name('admin');
+//
+//
+//});
 
-});
+Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 /*
 Route::get('/home', function (){
