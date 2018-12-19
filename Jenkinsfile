@@ -38,6 +38,7 @@ node('master'){
 
 	stage('laravel migrations'){
 		sh 'cd /home/student/projekty/laradock && sudo docker-compose exec -T --user=laradock workspace /var/www/serwis/artisan migrate:refresh'
+		sh 'cd /home/student/projekty/laradock && sudo docker-compose exec -T --user=laradock workspace /var/www/serwis/artisan db:seed'
 
 	}
 }
