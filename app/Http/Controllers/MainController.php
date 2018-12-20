@@ -18,5 +18,10 @@ class MainController extends Controller
         ]);
     }
 
+    public function orderFlower(){
+
+
+    }
+
 
 }

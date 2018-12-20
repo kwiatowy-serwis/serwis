@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\DataManager;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -16,7 +17,15 @@ class OrderController extends Controller
     public function index()
     {
 
-        return view('order');
+
+        $dataManager = new DataManager();
+        $flower = $dataManager->getRzeszowFlowers();
+
+        return view('order', [
+            'flowers' => $flower
+        ]);
+
+        //return view('order');
 
 
     }
