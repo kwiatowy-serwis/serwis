@@ -36,7 +36,6 @@ class OrderController extends Controller
         $flower = json_decode(base64_decode($flower));
 
         $data=new \stdClass();
-        $data->deserialized = $flower;
 
         $data->quantity = $request->request->get('flowerQuantity');
 
