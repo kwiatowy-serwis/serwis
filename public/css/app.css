@@ -10511,7 +10511,6 @@ body {
     display: -ms-flexbox;
     display: flex;
     width: 100%;
-    background-color: red;
   }
 
   .jumbotron-heading-custom {
@@ -10538,7 +10537,6 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background-color: red;
   }
 }
 
