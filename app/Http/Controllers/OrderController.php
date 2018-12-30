@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\DataManager;
+use App\Services\Kwiaciarnia\Rzeszow;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -19,6 +20,7 @@ class OrderController extends Controller
         $flower = $request->request->get('flower');
         $flower = json_decode(base64_decode($flower));
 
+        $this->makeOrder($flower);
         dump($flower);
         die;
 
@@ -26,6 +28,15 @@ class OrderController extends Controller
 //            'flower' => $flower,
 //        ]);
 
+
+    }
+
+    public function makeOrder($flower)
+    {
+        $kwiaciarnia = new Rzeszow();
+        $res = $kwiaciarnia->makeOrder($flower->id, 5);
+        dump($res);
+        die;
 
     }
 

@@ -17,11 +17,4 @@ class MainController extends Controller
             'flowers' => $flowers
         ]);
     }
-
-    public function orderFlower(){
-
-
-    }
-
-
 }

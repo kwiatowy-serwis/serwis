@@ -12,12 +12,28 @@ use App\Services\Kwiaciarnia\Interfaces\Kwiaciarnia;
 class Rzeszow extends KwiaciarniaBase implements Kwiaciarnia
 {
 //    private $url = 'http://kwiaciarnia-rzeszow.test/';
-    private $url = 'http://192.168.56.103/kwiaciarniaRzeszow/public/';
+//    private $url = 'http://192.168.56.103/kwiaciarniaRzeszow/public/flower';
+
+    private $url = 'http://kwiaciarnia-rzeszow.test/api/flower';
 
     public function pobierzDane ()
     {
-        $endpoint = 'flower';
-        $result = $this->client->request(HttpMethods::GET, $this->url . $endpoint);
+        $result = $this->client->request(HttpMethods::GET, $this->url);
+        return $this->responseToArray($result);
+    }
+
+
+    public function makeOrder ($id, $quantity)
+    {
+        $params = [
+            'form_params' => [
+                'id' => $id,
+                'quantity' => $quantity
+            ]
+        ];
+        $endpoint = '/order';
+
+        $result = $this->client->request(HttpMethods::POST, $this->url . $endpoint, $params);
         return $this->responseToArray($result);
     }
 }

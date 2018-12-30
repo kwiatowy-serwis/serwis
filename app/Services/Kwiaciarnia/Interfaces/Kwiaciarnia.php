@@ -12,4 +12,6 @@ namespace App\Services\Kwiaciarnia\Interfaces;
 interface Kwiaciarnia
 {
     public function pobierzDane();
+
+    public function makeOrder($id, $quantity);
 }

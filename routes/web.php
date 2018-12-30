@@ -57,6 +57,8 @@ Route::get('/home', function (){
 
 Route::get('/order', 'OrderController@index')->name('order');
 
+Route::get('/order/make', 'OrderController@makeOrder')->name('makeOrder');
+
 
 //Route::group(['middleware'=>'admin'], function(){
 //    return view('admin.index')->name('dashboard');

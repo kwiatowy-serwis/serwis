@@ -25,9 +25,9 @@ class HttpClient
         $this->client = new \GuzzleHttp\Client();
     }
 
-    public function request ($method = HttpMethods::GET, $url)
+    public function request ($method = HttpMethods::GET, $url, $options = [])
     {
-        $response = $this->client->request($method, $url);
+        $response = $this->client->request($method, $url, $options);
 
         $this->header = $response->getHeader('content-type');
         $this->statusCode = $response->getStatusCode();
