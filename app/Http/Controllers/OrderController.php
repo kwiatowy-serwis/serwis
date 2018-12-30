@@ -21,6 +21,10 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $flower = $request->request->get('flower');
+        if(!$flower )
+        {
+            return redirect('/');
+        }
         $flower = json_decode(base64_decode($flower));
 
         $flower->serialized=$request->request->get('flower');
@@ -32,27 +36,29 @@ class OrderController extends Controller
 
     }
 
-    public function order(Request $request){
+    public function order(Request $request)
+    {
 
+        $flowerQuery   = $request->request->get('flower');
+        $quantity      = $request->request->get('flowerQuantity');
 
-        $flower = $request->request->get('flower');
-        $flower = json_decode(base64_decode($flower));
+        $flower = json_decode(base64_decode($flowerQuery));
 
+        if(!$flower || !$quantity || $quantity > $flower->quantity)
+        {
+            return redirect('/');
+        }
 
         $data= new \stdClass();
-
-        $data->quantity = $request->request->get('flowerQuantity');
-
+        $data->quantity = $quantity;
 
         $dataManager = new DataManager();
         $couriers = $dataManager->getCouriers();
 
-
-
         return view('orderForm', [
             'flower' => $flower,
             'data' => $data,
-            'courier' => $couriers,
+            'couriers' => $couriers,
         ]);
 
     }
@@ -80,8 +86,8 @@ class OrderController extends Controller
 
         $inputOrders->save();
 
-        //$kwiaciarnia = new Rzeszow();
-        //$res = $kwiaciarnia->makeOrder($flower->id, 5);
+        $kwiaciarnia = new Rzeszow();
+        $res = $kwiaciarnia->makeOrder(1, 5);
 
 
         $kwiaciarnia = new Rzeszow();

@@ -19,8 +19,6 @@ Route::get('/', 'MainController@index');
 
 
 Route::group(['middleware' => ['auth', 'admin']], function (){
-
-
     Route::get('/admin', 'AdminController@index')->name('admin');
 
 });
