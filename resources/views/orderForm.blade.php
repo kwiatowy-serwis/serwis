@@ -37,13 +37,13 @@
         <div class="row">
             <div class="col-sm-12 col-md-12">
 
-                <form method="POST" action="{{ route('register') }}">
+                <form method="post" action="{{action('OrderController@makeOrder')}}">
                     @csrf
                     <div class="form-group row">
-                        <label for="name" class="col-md-2 col-form-label text-md-left">{{ __('Imie') }}</label>
+                        <label for="firstname" class="col-md-2 col-form-label text-md-left">{{ __('Imie') }}</label>
 
                         <div class="col-md-4">
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                            <input id="firstname" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('name') }}" required autofocus>
 
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -54,10 +54,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="name" class="col-md-2 col-form-label text-md-left">{{ __('Nazwisko') }}</label>
+                        <label for="lastname" class="col-md-2 col-form-label text-md-left">{{ __('Nazwisko') }}</label>
 
                         <div class="col-md-4">
-                            <input id="name" type="text" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" name="surname" value="{{ old('surname') }}" required autofocus>
+                            <input id="lastname" type="text" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('surname') }}" required autofocus>
 
                             @if ($errors->has('surname'))
                                 <span class="invalid-feedback" role="alert">
@@ -68,19 +68,19 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="number" class="col-md-2 col-form-label text-md-left">{{ __('Numer telefonu') }}</label>
+                        <label for="phone" class="col-md-2 col-form-label text-md-left">{{ __('Numer telefonu') }}</label>
 
                         <div class="col-md-4">
-                            <input id="number" type="text" class="form-control" name="email" required>
+                            <input id="phone" type="text" class="form-control" name="phone" required>
 
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="town" class="col-md-2 col-form-label text-md-left">{{ __('Miasto') }}</label>
+                        <label for="city" class="col-md-2 col-form-label text-md-left">{{ __('Miasto') }}</label>
 
                         <div class="col-md-4">
-                            <select class="form-control" name="cars">
+                            <select class="form-control" name="city">
 
                                 @if($flower->city == "Rzeszow")
                                     <option value="rzeszow">Rzeszów</option>
@@ -101,19 +101,19 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="home-number" class="col-md-2 col-form-label text-md-left">{{ __('Numer domu') }}</label>
+                        <label for="houseNumber" class="col-md-2 col-form-label text-md-left">{{ __('Numer domu') }}</label>
 
                         <div class="col-md-4">
-                            <input id="home-number" type="text" class="form-control" name="home-number" required>
+                            <input id="houseNumber" type="text" class="form-control" name="houseNumber" required>
 
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="post-number" class="col-md-2 col-form-label text-md-left">{{ __('Kod pocztowy') }}</label>
+                        <label for="zip_code" class="col-md-2 col-form-label text-md-left">{{ __('Kod pocztowy') }}</label>
 
                         <div class="col-md-4">
-                            <input id="post-number" type="text" class="form-control" name="post-number" required>
+                            <input id="zip_code" type="text" class="form-control" name="zip_code" required>
 
                         </div>
                     </div>
