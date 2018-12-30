@@ -86,8 +86,8 @@ class OrderController extends Controller
 
         $inputOrders->save();
 
-        //$kwiaciarnia = new Rzeszow();
-        //$res = $kwiaciarnia->makeOrder($flower->id, 5);
+        $kwiaciarnia = new Rzeszow();
+        $res = $kwiaciarnia->makeOrder(1, 5);
 
         return redirect()->route('home');
     }
