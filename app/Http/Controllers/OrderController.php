@@ -14,18 +14,17 @@ class OrderController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $flower = $request->request->get('flower');
+        $flower = json_decode(base64_decode($flower));
 
+        dump($flower);
+        die;
 
-        $dataManager = new DataManager();
-        $flower = $dataManager->getRzeszowFlowers();
-
-        return view('order', [
-            'flowers' => $flower
-        ]);
-
-        //return view('order');
+//        return view('order', [
+//            'flower' => $flower,
+//        ]);
 
 
     }
