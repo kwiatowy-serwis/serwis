@@ -10566,8 +10566,8 @@ body {
 }
 
 .flower-image-details {
-  width: 60%;
-  height: 60%;
+  width: 50%;
+  height: 50%;
 }
 
 .form-control-custom {
@@ -10575,7 +10575,7 @@ body {
 }
 
 .caption-custom {
-  width: 60%;
+  width: 50%;
 }
 
 .button-details {

@@ -40,6 +40,8 @@ class OrderController extends Controller
 
         $data->quantity = $request->request->get('flowerQuantity');
 
+
+
         return view('orderForm', [
             'flower' => $flower,
             'data' => $data,
