@@ -62,6 +62,11 @@ class DataManager
         return $out;
     }
 
+    public function getOneRzeszowFlower()
+    {
+        $flowers = $this->getRzeszowFlowers();
+        return $flowers[0];
+    }
 
 
     private function isFlowerExist($flower, $flowers){

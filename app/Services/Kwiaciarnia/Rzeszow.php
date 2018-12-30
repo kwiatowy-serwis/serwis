@@ -12,7 +12,7 @@ use App\Services\Kwiaciarnia\Interfaces\Kwiaciarnia;
 class Rzeszow extends ConnectionBase implements Kwiaciarnia
 {
 //    private $url = 'http://kwiaciarnia-rzeszow.test/';
-      private $url = 'http://192.168.56.103/kwiaciarniaRzeszow/public/flower';
+      private $url = 'http://192.168.56.103/kwiaciarniaRzeszow/public/api/flower';
 
     //private $url = 'http://kwiaciarnia-rzeszow.test/api/flower';
 
@@ -21,6 +21,8 @@ class Rzeszow extends ConnectionBase implements Kwiaciarnia
         $result = $this->client->request(HttpMethods::GET, $this->url);
         return $this->responseToArray($result);
     }
+
+
 
 
     public function makeOrder ($id, $quantity)
