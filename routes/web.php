@@ -35,6 +35,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/order', 'OrderController@index')->name('order');
 
 Route::get('/order/make', 'OrderController@makeOrder')->name('makeOrder');
+Route::get('/order/form', 'OrderController@order')->name('orderForm');
 
 
 

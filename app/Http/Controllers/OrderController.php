@@ -20,9 +20,29 @@ class OrderController extends Controller
         $flower = $request->request->get('flower');
         $flower = json_decode(base64_decode($flower));
 
+        $flower->serialized=$request->request->get('flower');
 
         return view('order', [
             'flower' => $flower,
+        ]);
+
+
+    }
+
+    public function order(Request $request){
+
+
+        $flower = $request->request->get('flower');
+        $flower = json_decode(base64_decode($flower));
+
+        $data=new \stdClass();
+        $data->deserialized = $flower;
+
+        $data->quantity = $request->request->get('flowerQuantity');
+
+        return view('orderForm', [
+            'flower' => $flower,
+            'data' => $data,
         ]);
 
 
