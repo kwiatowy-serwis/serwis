@@ -15,6 +15,9 @@ class CreateOrderPlacesTable extends Migration
     {
         Schema::create('order_places', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('phone');
             $table->string('city');
             $table->string('street');
             $table->string('zip_code');

@@ -35,11 +35,9 @@ class OrderController extends Controller
         $flower = $request->request->get('flower');
         $flower = json_decode(base64_decode($flower));
 
-        $data=new \stdClass();
+        $data= new \stdClass();
 
         $data->quantity = $request->request->get('flowerQuantity');
-
-
 
         return view('orderForm', [
             'flower' => $flower,

@@ -13,8 +13,30 @@ class DataManager
         $rzeszow = new KwiaciarniaAPI\Rzeszow();
         $rzeszowData = $rzeszow->pobierzDane();
 
+        return $this->getFlowersWithPhoto($rzeszowData);
+    }
+
+    public function getKrakowFlowers()
+    {
+        $rzeszow = new KwiaciarniaAPI\Krakow();
+        $rzeszowData = $rzeszow->pobierzDane();
+
+        return $this->getFlowersWithPhoto($rzeszowData);
+    }
+
+    public function getCouriers()
+    {
+        $couriers = new Kurier\GlobalKurier();
+
+        return $couriers->pobierzKurierow();
+    }
+
+
+    private function getFlowersWithPhoto($flowers)
+    {
         $out = [];
-        foreach ($rzeszowData as $flowerDetails)
+
+        foreach ($flowers as $flowerDetails)
         {
             $path = '/images/flowers/%s.jpg';
             $flower = sprintf(public_path().$path, $flowerDetails->name);
@@ -38,6 +60,7 @@ class DataManager
 
         return $out;
     }
+
 
 
     private function isFlowerExist($flower, $flowers){

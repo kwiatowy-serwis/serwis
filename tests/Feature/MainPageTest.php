@@ -32,8 +32,6 @@ class MainPageTest extends TestCase
 
         $user = factory(User::class)->make();
         $response = $this->actingAs($user)->get($this->getMainPageRoute());
-//        $response->assertStatus(200);
-
         $response->assertViewIs('main');
     }
 

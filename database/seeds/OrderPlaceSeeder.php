@@ -13,6 +13,9 @@ class OrderPlaceSeeder extends Seeder
     public function run()
     {
         $adminModel = new \App\OrderPlace();
+        $adminModel->firstname = "Jan";
+        $adminModel->lastname = "Nowak";
+        $adminModel->phone = "656225321";
         $adminModel->city = "Rzeszow";
         $adminModel->street = "Rejtana";
         $adminModel->zip_code = "35-253";
@@ -20,6 +23,9 @@ class OrderPlaceSeeder extends Seeder
         $adminModel->save();
 
         $adminModel = new \App\OrderPlace();
+        $adminModel->firstname = "Zbigniew";
+        $adminModel->lastname = "Kowalski";
+        $adminModel->phone = "656225321";
         $adminModel->city = "Krakow";
         $adminModel->street = "Witosa";
         $adminModel->zip_code = "35-253";
