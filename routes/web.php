@@ -18,16 +18,6 @@ Auth::routes();
 Route::get('/', 'MainController@index');
 
 
-//Route::group(['middleware' => ['web', 'auth','admin']], function (){
-//
-//
-//        Route::get('/home', 'HomeController@index')->name('home');
-//
-//        Route::get('/admin', 'AdminController@index')->name('admin');
-//
-//
-//});
-
 Route::group(['middleware' => ['auth', 'admin']], function (){
 
 
@@ -41,30 +31,13 @@ Route::group(['middleware' => ['auth', 'admin']], function (){
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-/*
-Route::get('/home', function (){
-    if(Auth::user()->isAdmin==0){
-
-
-        return view('home');
-
-    }else{
-        return view('admin.index');
-    }
-})->name('home');
-*/
-
 
 Route::get('/order', 'OrderController@index')->name('order');
 
 Route::get('/order/make', 'OrderController@makeOrder')->name('makeOrder');
 
 
-//Route::group(['middleware'=>'admin'], function(){
-//    return view('admin.index')->name('dashboard');
-//});
 
-//Route::get('/admin', 'HomeCon@index')->middleware('admin');
 
 
 

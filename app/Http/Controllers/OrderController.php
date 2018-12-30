@@ -20,13 +20,10 @@ class OrderController extends Controller
         $flower = $request->request->get('flower');
         $flower = json_decode(base64_decode($flower));
 
-        $this->makeOrder($flower);
-        dump($flower);
-        die;
 
-//        return view('order', [
-//            'flower' => $flower,
-//        ]);
+        return view('order', [
+            'flower' => $flower,
+        ]);
 
 
     }
