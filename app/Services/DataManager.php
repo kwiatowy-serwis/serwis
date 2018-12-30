@@ -31,6 +31,7 @@ class DataManager
 
             $flowerDetails->flowerImage = asset(sprintf($path, $flowerDetails->name));
             $flowerDetails->name = ucfirst($flowerDetails->name);
+            $flowerDetails->serialized = base64_encode(\GuzzleHttp\json_encode($flowerDetails));
             $out[] = $flowerDetails;
 
         }

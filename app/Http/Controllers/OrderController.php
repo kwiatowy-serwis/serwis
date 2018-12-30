@@ -16,21 +16,18 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-
-
-       // $dataManager = new DataManager();
-        //$flowers = $dataManager->getRzeszowFlowers();
         $flower = $request->request->get('flower');
         $flower = json_decode(base64_decode($flower));
 
         dump($flower);
         die;
 
-
+//        return view('order', [
+//            'flower' => $flower,
+//        ]);
 
 
     }
-
 
 
 }

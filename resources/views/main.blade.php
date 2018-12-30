@@ -10,11 +10,19 @@
                 <div class="caption">
                     <h3>{{$flower->name}}</h3>
                     <p>Count: {{$flower->quantity}}</p>
-            </div>
-                <p class="button-flower"><a href="{{route('flower-details')}}" class="btn btn-primary" role="button">Kup Teraz</a></p>
+                </div>
+                <p class="button-flower">
+                    {{--<a href="{{route('order')}}" class="btn btn-primary" role="button">Kup Teraz</a>--}}
+                    <form action="{{route('order')}}" method="GET">
+                        <input type="hidden" name="flower" value="{{$flower->serialized}}"/>
+                        <button type="submit" class="btn btn-primary" role="button">Kup Teraz</button>
+                    </form>
+
+                </p>
             </div>
         </div>
 
 @endforeach
+
     </div>
 @endsection
