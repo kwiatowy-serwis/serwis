@@ -7,7 +7,7 @@ use App\Services\Connections\HttpClient;
 /**
  * Artur Pilch <artur.pilch12@gmail.com>
  */
-abstract class KwiaciarniaBase
+abstract class ConnectionBase
 {
     /**
      * @var HttpClient

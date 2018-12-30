@@ -81,8 +81,12 @@
 
                         <div class="col-md-4">
                             <select class="form-control" name="cars">
-                                <option value="rzeszow">Rzeszów</option>
-                                <option value="krakow">Kraków</option>
+
+                                @if($flower->city == "Rzeszow")
+                                    <option value="rzeszow">Rzeszów</option>
+                               @else
+                                    <option value="krakow">Kraków</option>
+                                @endif
                             </select>
                         </div>
                     </div>

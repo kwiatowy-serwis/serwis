@@ -13,8 +13,30 @@ class DataManager
         $rzeszow = new KwiaciarniaAPI\Rzeszow();
         $rzeszowData = $rzeszow->pobierzDane();
 
+        return $this->getFlowersWithPhoto($rzeszowData, "Rzeszow");
+    }
+
+    public function getKrakowFlowers()
+    {
+        $rzeszow = new KwiaciarniaAPI\Krakow();
+        $rzeszowData = $rzeszow->pobierzDane();
+
+        return $this->getFlowersWithPhoto($rzeszowData, "Krakow");
+    }
+
+    public function getCouriers()
+    {
+        $couriers = new Kurier\GlobalKurier();
+
+        return $couriers->pobierzKurierow();
+    }
+
+
+    private function getFlowersWithPhoto($flowers, $city)
+    {
         $out = [];
-        foreach ($rzeszowData as $flowerDetails)
+
+        foreach ($flowers as $flowerDetails)
         {
             $path = '/images/flowers/%s.jpg';
             $flower = sprintf(public_path().$path, $flowerDetails->name);
@@ -31,6 +53,7 @@ class DataManager
 
             $flowerDetails->flowerImage = asset(sprintf($path, $flowerDetails->name));
             $flowerDetails->name = ucfirst($flowerDetails->name);
+            $flowerDetails->city = $city;
             $flowerDetails->serialized = base64_encode(\GuzzleHttp\json_encode($flowerDetails));
             $out[] = $flowerDetails;
 
@@ -38,6 +61,7 @@ class DataManager
 
         return $out;
     }
+
 
 
     private function isFlowerExist($flower, $flowers){

@@ -21,9 +21,7 @@ Route::get('/', 'MainController@index');
 Route::group(['middleware' => ['auth', 'admin']], function (){
 
 
-    Route::get('/admin', function (){
-      return view('admin.index');
-    })->name('admin');
+    Route::get('/admin', 'AdminController@index')->name('admin');
 
 });
 

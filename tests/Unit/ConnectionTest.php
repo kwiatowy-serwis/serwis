@@ -2,30 +2,42 @@
 
 namespace Tests\Unit;
 
+
+use App\Services\Kurier\GlobalKurier;
+use App\Services\Kwiaciarnia\Krakow;
 use App\Services\Kwiaciarnia\Rzeszow;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ConnectionTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testToTestTrue()
-    {
-        $this->assertTrue(true);
-    }
 
     public function testConnectionKwiaciarniaRzeszow()
     {
         $kwiaciarniaReszow = new Rzeszow();
-        $kwiaciarniaReszow->pobierzDane();
+        $response =  $kwiaciarniaReszow->pobierzDane();
 
+        $this->assertIsArray($response);
         $this->assertEquals(200, $kwiaciarniaReszow->getClient()->getStatusCode());
     }
+
+    public function testConnectionKwiaciarniaKrakow()
+    {
+        $kwiaciarniaKrakow = new Krakow();
+        $response = $kwiaciarniaKrakow->pobierzDane();
+
+        $this->assertIsArray($response);
+        $this->assertEquals(200, $kwiaciarniaKrakow->getClient()->getStatusCode());
+    }
+
+    public function testConnectionKurier()
+    {
+        $kurier = new GlobalKurier();
+        $response = $kurier->pobierzKurierow();
+
+        $this->assertIsArray($response);
+        $this->assertEquals(200, $kurier->getClient()->getStatusCode());
+    }
+
 
 
 
