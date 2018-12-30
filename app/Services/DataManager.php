@@ -13,15 +13,15 @@ class DataManager
         $rzeszow = new KwiaciarniaAPI\Rzeszow();
         $rzeszowData = $rzeszow->pobierzDane();
 
-        return $this->getFlowersWithPhoto($rzeszowData);
+        return $this->getFlowersWithPhoto($rzeszowData, 'Rzeszow');
     }
 
     public function getKrakowFlowers()
     {
-        $rzeszow = new KwiaciarniaAPI\Krakow();
-        $rzeszowData = $rzeszow->pobierzDane();
+        $krakow = new KwiaciarniaAPI\Krakow();
+        $krakowData = $krakow->pobierzDane();
 
-        return $this->getFlowersWithPhoto($rzeszowData);
+        return $this->getFlowersWithPhoto($krakowData, 'Krakow');
     }
 
     public function getCouriers()
@@ -32,7 +32,7 @@ class DataManager
     }
 
 
-    private function getFlowersWithPhoto($flowers)
+    private function getFlowersWithPhoto($flowers, $city)
     {
         $out = [];
 
@@ -53,6 +53,7 @@ class DataManager
 
             $flowerDetails->flowerImage = asset(sprintf($path, $flowerDetails->name));
             $flowerDetails->name = ucfirst($flowerDetails->name);
+            $flowerDetails->city = $city;
             $flowerDetails->serialized = base64_encode(\GuzzleHttp\json_encode($flowerDetails));
             $out[] = $flowerDetails;
 

@@ -25,13 +25,10 @@ class OrderController extends Controller
         return view('order', [
             'flower' => $flower,
         ]);
-
-
     }
 
-    public function order(Request $request){
-
-
+    public function order(Request $request)
+    {
         $flower = $request->request->get('flower');
         $flower = json_decode(base64_decode($flower));
 
@@ -51,8 +48,8 @@ class OrderController extends Controller
     {
         $kwiaciarnia = new Rzeszow();
         $res = $kwiaciarnia->makeOrder($flower->id, 5);
-        dump($res);
-        die;
+
+
 
     }
 

@@ -7,17 +7,11 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class AdminTest extends TestCase
+class OrderTest extends TestCase
 {
-
-    public function getHomeRoute()
+    public function getOrderRoute()
     {
-        return route('home');
-    }
-
-    public function getAdminRoute()
-    {
-        return route('admin');
+        return route('order');
     }
 
     public function getLoginRoute()
@@ -25,35 +19,22 @@ class AdminTest extends TestCase
         return route('login');
     }
 
-
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testCanAdminSeeAdminPage()
+    public function testCannotGuestGoBuying()
     {
-        $admin = factory(User::class)->make([
-            'isAdmin' => 1
-                                           ]);
-        $response = $this->actingAs($admin)->get($this->getAdminRoute());
-        $response->assertViewIs('admin.index');
-    }
-
-    public function testCannotLoggedUserSeeAdminPage()
-    {
-        $admin = factory(User::class)->make([
-                        'isAdmin' => 0
-                    ]);
-        $response = $this->actingAs($admin)->get($this->getAdminRoute());
-        $response->assertRedirect($this->getHomeRoute());
-
-    }
-
-    public function testCannotGuestSeeAdminPage()
-    {
-        $response = $this->get($this->getAdminRoute());
+        $response = $this->get($this->getOrderRoute());
         $response->assertRedirect($this->getLoginRoute());
     }
 
+    public function canLoggedUserGoBuying()
+    {
+        $admin    = factory(User::class)->make();
+        $response = $this->actingAs($admin)->get($this->getOrderRoute());
+        $response->assertViewIs('order');
+        $response->assertViewHas('flower');
+    }
 }
