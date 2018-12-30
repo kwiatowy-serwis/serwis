@@ -12,7 +12,7 @@ use App\Services\Kwiaciarnia\Interfaces\Kwiaciarnia;
 class Rzeszow extends ConnectionBase implements Kwiaciarnia
 {
 //    private $url = 'http://kwiaciarnia-rzeszow.test/';
-      private $url = 'http://192.168.56.103/kwiaciarniaRzeszow/public/flower';
+      private $url = 'http://192.168.56.103/kwiaciarniaRzeszow/public/api/flower';
 
     //private $url = 'http://kwiaciarnia-rzeszow.test/api/flower';
 

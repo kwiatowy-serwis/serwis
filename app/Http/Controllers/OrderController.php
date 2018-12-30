@@ -83,6 +83,11 @@ class OrderController extends Controller
         //$kwiaciarnia = new Rzeszow();
         //$res = $kwiaciarnia->makeOrder($flower->id, 5);
 
+
+        $kwiaciarnia = new Rzeszow();
+        $kwiaciarnia->makeOrder(1,2);
+
+
         return redirect()->route('home');
     }
 
