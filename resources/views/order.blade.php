@@ -21,6 +21,7 @@
                                     <option>{{$i}}</option>
                                 @endfor
                             </select>
+                            <br />
                             <input type="hidden" name="flower" value="{{$flower->serialized}}"/>
                             <button type="submit" class="btn btn-primary" role="button">Kup Teraz</button>
                         </form>
