@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\FlowerOrder;
+use App\OrderPlace;
 use App\Services\DataManager;
 use App\Services\Kwiaciarnia\Rzeszow;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -29,6 +32,8 @@ class OrderController extends Controller
         return view('order', [
             'flower' => $flower,
         ]);
+
+
     }
 
     public function order(Request $request)
@@ -60,21 +65,31 @@ class OrderController extends Controller
 
     public function makeOrder(Request $request)
     {
-        //TODO
-        // dodac do bazy
-        // posałc do kwiaciarni
-        // poslac do kuruerów
+
+        $input = new OrderPlace;
+        $input->firstname = $request->firstname;
+        $input->lastname = $request->lastname;
+        $input->phone = $request->phone;
+        $input->city = $request->city;
+        $input->street = $request->street;
+        $input->zip_code = $request->zip_code;
+        $input->houseNumber = $request->houseNumber;
+
+        $input->save();
+
+        $inputOrders = new FlowerOrder;
+        $inputOrders->florist_company = $input->city;
+        $inputOrders->courier_company = "GlobalUser";
+        $inputOrders->order_place_id = $input->id;
+        $inputOrders->user_id = Auth::user()->id;
 
 
+        $inputOrders->save();
 
-//        $kwiaciarnia = new Rzeszow();
-//        $res = $kwiaciarnia->makeOrder($flower->id, 5);
+        //$kwiaciarnia = new Rzeszow();
+        //$res = $kwiaciarnia->makeOrder($flower->id, 5);
 
-
-        //redirect
-
-        // returr view('orderComplete');
-
+        return redirect()->route('home');
     }
 
 
