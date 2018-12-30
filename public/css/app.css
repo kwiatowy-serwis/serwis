@@ -10565,3 +10565,20 @@ body {
           align-items: center;
 }
 
+.flower-image-details {
+  width: 60%;
+  height: 60%;
+}
+
+.form-control-custom {
+  width: 100%;
+}
+
+.caption-custom {
+  width: 60%;
+}
+
+.button-details {
+  margin-top: 10px;
+}
+

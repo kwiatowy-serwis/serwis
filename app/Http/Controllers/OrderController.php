@@ -16,18 +16,17 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
+
+
         $flower = $request->request->get('flower');
         $flower = json_decode(base64_decode($flower));
 
-        dump($flower);
-        die;
 
-//        return view('order', [
-//            'flower' => $flower,
-//        ]);
+        return view('order', [
+            'flower' => $flower,
+        ]);
 
 
     }
-
 
 }
