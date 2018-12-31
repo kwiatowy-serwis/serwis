@@ -6,6 +6,7 @@ use App\FlowerOrder;
 use App\OrderPlace;
 use App\Services\DataManager;
 use App\Services\Kurier\GlobalKurier;
+use App\Services\Kwiaciarnia\Krakow;
 use App\Services\Kwiaciarnia\Rzeszow;
 use Illuminate\Http\Request;
 use App\User;
@@ -66,6 +67,10 @@ class OrderController extends Controller
 
     public function makeOrder(Request $request)
     {
+        $flowerId = $request->request->get('flowerId');
+        $flowerQuantity = $request->request->get('flowerQuantity');
+
+
         $input = new OrderPlace;
         $input->firstname = $request->firstname;
         $input->lastname = $request->lastname;
@@ -78,19 +83,28 @@ class OrderController extends Controller
         $input->save();
 
         $inputOrders = new FlowerOrder;
-        $inputOrders->ware = 'Stokrotka';
-        $inputOrders->price = 12;
-        $inputOrders->quantity = 12;
+        $inputOrders->ware = 'Stokrotka'; //TODO
+        $inputOrders->price = 12; //TODO
+        $inputOrders->quantity = 12; //TODO
         $inputOrders->florist_company = $input->city;
-        $inputOrders->courier_company = "GlobalUser";
+        $inputOrders->courier_company = "GlobalKurier";
         $inputOrders->order_place_id = $input->id;
         $inputOrders->user_id = Auth::user()->id;
+
+
         $inputOrders->save();
 
-        $kwiaciarnia = new Rzeszow();
-        $res = $kwiaciarnia->makeOrder(1, 5);
 
-        $receptionPlace = $kwiaciarnia->getCompanyAddress();
+        if($input->city == "rzeszow") {
+            $kwiaciarnia_rz = new Rzeszow();
+            $res = $kwiaciarnia_rz->makeOrder($flowerId, $flowerQuantity);
+        }else {
+            $kwiaciarnia_rz = new Krakow();
+            $res = $kwiaciarnia_rz->makeOrder($flowerId, $flowerQuantity);
+        }
+
+
+        $receptionPlace = $res->getCompanyAddress();
 
         $receptionPlace = (array) $receptionPlace;
 

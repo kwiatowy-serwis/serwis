@@ -12,7 +12,6 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Yatra+One" rel="stylesheet">
         <!-- Style -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -99,8 +98,31 @@
 
     <section class="jumbotron text-center banner-jumbotron">
         <div class="container container-custom">
+            <div class="col-sm-12 col-md-10">
             <h1 class="jumbotron-heading-custom">Serwis Kwiatowy</h1>
+                <h2>Z której kwiaciarni chcesz skorzystać?</h2>
 
+
+                <form action="{{route('welcome')}}" method="GET">
+                    <select class="form-control form-control-custom" name="cityName">
+                    @if($cityChoice == "Kraków")
+                            <option>Kraków</option>
+                            <option>Rzeszów</option>
+
+                    </select>
+                        @else
+
+                        <option>Rzeszów</option>
+                        <option>Kraków</option>
+
+
+                    @endif
+                        </select>
+                    <button class="btn btn-primary" type="submit">Zmień lokalizacje</button>
+
+                </form>
+
+            </div>
         </div>
     </section>
 
