@@ -118,7 +118,7 @@ class OrderController extends Controller
         ];
 
         $kurier = new GlobalKurier();
-        $res = $kurier->makeOrder(1, $receptionPlace, $deliverPlace);
+        $res = $kurier->makeOrder(1, $receptionPlace, $deliverPlace);//TODO kurier_id
 
 
         return redirect()->route('home');
