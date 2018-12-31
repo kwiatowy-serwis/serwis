@@ -17,6 +17,9 @@ class FlowerOrderSeeder extends Seeder
         $adminModel->courier_company = "GlobalUser";
         $adminModel->order_place_id = 1;
         $adminModel->user_id = 1;
+        $adminModel->ware = "ware1";
+        $adminModel->quantity = rand(0,10);
+        $adminModel->price = rand(1,100);
         $adminModel->save();
 
         $adminModel = new \App\FlowerOrder();
@@ -24,6 +27,9 @@ class FlowerOrderSeeder extends Seeder
         $adminModel->courier_company = "GlobalUser";
         $adminModel->order_place_id = 2;
         $adminModel->user_id = 1;
+        $adminModel->ware = "ware2";
+        $adminModel->quantity = rand(0,10);
+        $adminModel->price = rand(1,100);
         $adminModel->save();
     }
 }

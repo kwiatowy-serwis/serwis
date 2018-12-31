@@ -15,10 +15,15 @@ class CreateFlowerOrdersTable extends Migration
     {
         Schema::create('flower_orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('order_place_id');
+            $table->string('ware');
+            $table->integer('quantity');
+            $table->integer('price');
             $table->string('florist_company');
             $table->string('courier_company');
-            $table->integer('order_place_id');
-            $table->integer('user_id');
+
+
             $table->timestamps();
         });
     }
