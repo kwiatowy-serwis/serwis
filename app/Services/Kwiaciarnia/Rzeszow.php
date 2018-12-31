@@ -22,9 +22,6 @@ class Rzeszow extends ConnectionBase implements Kwiaciarnia
         return $this->responseToArray($result);
     }
 
-
-
-
     public function makeOrder ($id, $quantity)
     {
         $params = [
@@ -36,6 +33,13 @@ class Rzeszow extends ConnectionBase implements Kwiaciarnia
         $endpoint = '/order';
 
         $result = $this->client->request(HttpMethods::POST, $this->url . $endpoint, $params);
+        return $this->responseToArray($result);
+    }
+
+    public function getCompanyAddress()
+    {
+        $endpoint = '/companyPlace';
+        $result = $this->client->request(HttpMethods::GET, $this->url. $endpoint);
         return $this->responseToArray($result);
     }
 }

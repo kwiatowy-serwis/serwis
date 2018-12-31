@@ -26,11 +26,19 @@ class Krakow extends ConnectionBase implements Kwiaciarnia
         $params = [
             'form_params' => [
                 'id' => $id,
+                'quantity' => $quantity,
             ]
         ];
         $endpoint = '/order';
 
         $result = $this->client->request(HttpMethods::POST, $this->url . $endpoint, $params);
+        return $this->responseToArray($result);
+    }
+
+    public function getCompanyAddress()
+    {
+        $endpoint = '/companyPlace';
+        $result = $this->client->request(HttpMethods::GET, $this->url. $endpoint);
         return $this->responseToArray($result);
     }
 }

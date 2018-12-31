@@ -21,11 +21,13 @@ class GlobalKurier extends ConnectionBase implements Kurier
     }
 
 
-    public function makeOrder ($id)
+    public function makeOrder ($id, $receptionPlace, $deliverPlace)
     {
         $params = [
             'form_params' => [
-                'id' => $id
+                'id' => $id,
+                'receptionPlace' => $receptionPlace,
+                'deliverPlace' => $deliverPlace,
             ]
         ];
         $endpoint = '/order';

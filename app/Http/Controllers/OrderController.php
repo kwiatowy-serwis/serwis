@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\FlowerOrder;
 use App\OrderPlace;
 use App\Services\DataManager;
+use App\Services\Kurier\GlobalKurier;
 use App\Services\Kwiaciarnia\Rzeszow;
 use Illuminate\Http\Request;
 use App\User;
@@ -65,7 +66,6 @@ class OrderController extends Controller
 
     public function makeOrder(Request $request)
     {
-
         $input = new OrderPlace;
         $input->firstname = $request->firstname;
         $input->lastname = $request->lastname;
@@ -78,16 +78,34 @@ class OrderController extends Controller
         $input->save();
 
         $inputOrders = new FlowerOrder;
+        $inputOrders->ware = 'Stokrotka';
+        $inputOrders->price = 12;
+        $inputOrders->quantity = 12;
         $inputOrders->florist_company = $input->city;
         $inputOrders->courier_company = "GlobalUser";
         $inputOrders->order_place_id = $input->id;
         $inputOrders->user_id = Auth::user()->id;
-
-
         $inputOrders->save();
 
         $kwiaciarnia = new Rzeszow();
         $res = $kwiaciarnia->makeOrder(1, 5);
+
+        $receptionPlace = $kwiaciarnia->getCompanyAddress();
+
+        $receptionPlace = (array) $receptionPlace;
+
+        $deliverPlace = [
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'city' => $request->city,
+            'street' => $request->street,
+            'zip_code' => $request->zip_code,
+            'phone' =>  $request->phone,
+        ];
+
+        $kurier = new GlobalKurier();
+        $res = $kurier->makeOrder(1, $receptionPlace, $deliverPlace);
+
 
         return redirect()->route('home');
     }

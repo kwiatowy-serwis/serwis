@@ -13,5 +13,5 @@ interface Kurier
 {
     public function pobierzKurierow();
 
-    public function makeOrder($id);
+    public function makeOrder($id, $receptionPlace, $deliverPlace);
 }
