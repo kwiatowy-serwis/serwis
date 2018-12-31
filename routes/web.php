@@ -15,7 +15,7 @@
 
 
 Auth::routes();
-Route::get('/', 'MainController@index');
+Route::get('/', 'MainController@index')->name('welcome');
 
 
 Route::group(['middleware' => ['auth', 'admin']], function (){

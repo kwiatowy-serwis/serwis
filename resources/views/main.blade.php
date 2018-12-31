@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="row">
-@foreach ($flowers as $key => $flower)
+
+@foreach ($flowers_rz as $key => $flower)
 
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">

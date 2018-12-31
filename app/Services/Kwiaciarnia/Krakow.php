@@ -26,6 +26,7 @@ class Krakow extends ConnectionBase implements Kwiaciarnia
         $params = [
             'form_params' => [
                 'id' => $id,
+                'quantity' => $quantity,
             ]
         ];
         $endpoint = '/order';

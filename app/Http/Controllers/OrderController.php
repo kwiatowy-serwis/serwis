@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\FlowerOrder;
 use App\OrderPlace;
 use App\Services\DataManager;
+use App\Services\Kwiaciarnia\Krakow;
 use App\Services\Kwiaciarnia\Rzeszow;
 use Illuminate\Http\Request;
 use App\User;
@@ -65,6 +66,9 @@ class OrderController extends Controller
 
     public function makeOrder(Request $request)
     {
+        $flowerId = $request->request->get('flowerId');
+        $flowerQuantity = $request->request->get('flowerQuantity');
+
 
         $input = new OrderPlace;
         $input->firstname = $request->firstname;
@@ -86,12 +90,14 @@ class OrderController extends Controller
 
         $inputOrders->save();
 
-        $kwiaciarnia = new Rzeszow();
-        $res = $kwiaciarnia->makeOrder(1, 5);
 
-
-        $kwiaciarnia = new Rzeszow();
-        $kwiaciarnia->makeOrder(1,2);
+        if($input->city == "rzeszow") {
+            $kwiaciarnia_rz = new Rzeszow();
+            $res = $kwiaciarnia_rz->makeOrder($flowerId, $flowerQuantity);
+        }else {
+            $kwiaciarnia_rz = new Krakow();
+            $res = $kwiaciarnia_rz->makeOrder($flowerId, $flowerQuantity);
+        }
 
 
         return redirect()->route('home');

@@ -53,6 +53,10 @@
                         </div>
                     </div>
 
+                    <input name="flowerId" hidden="hidden" value="{{$flower->id}}"/>
+                    <input name="flowerQuantity" hidden="hidden" value="{{$data->quantity}}"/>
+
+
                     <div class="form-group row">
                         <label for="lastname" class="col-md-2 col-form-label text-md-left">{{ __('Nazwisko') }}</label>
 
