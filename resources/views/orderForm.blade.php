@@ -55,6 +55,8 @@
 
                     <input name="flowerId" hidden="hidden" value="{{$flower->id}}"/>
                     <input name="flowerQuantity" hidden="hidden" value="{{$data->quantity}}"/>
+                    <input name="flowerName" hidden="hidden" value="{{$flower->name}}"/>
+                    <input name="PriceForFlower" hidden="hidden" value="{{$data->quantity*$flower->price}}"/>
 
 
                     <div class="form-group row">

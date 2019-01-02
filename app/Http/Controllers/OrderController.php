@@ -69,7 +69,8 @@ class OrderController extends Controller
     {
         $flowerId = $request->request->get('flowerId');
         $flowerQuantity = $request->request->get('flowerQuantity');
-
+        $flowerName = $request->request->get('flowerName');
+        $PriceForFlower = $request->request->get('PriceForFlower');
 
         $input = new OrderPlace;
         $input->firstname = $request->firstname;
@@ -83,9 +84,9 @@ class OrderController extends Controller
         $input->save();
 
         $inputOrders = new FlowerOrder;
-        $inputOrders->ware = 'Stokrotka'; //TODO
-        $inputOrders->price = 12; //TODO
-        $inputOrders->quantity = 12; //TODO
+        $inputOrders->ware = $flowerName;
+        $inputOrders->price = $PriceForFlower;
+        $inputOrders->quantity = $flowerQuantity;
         $inputOrders->florist_company = $input->city;
         $inputOrders->courier_company = "GlobalKurier";
         $inputOrders->order_place_id = $input->id;
@@ -104,7 +105,7 @@ class OrderController extends Controller
         }
 
 
-        $receptionPlace = $res->getCompanyAddress();
+        $receptionPlace = $kwiaciarnia_rz->getCompanyAddress();
 
         $receptionPlace = (array) $receptionPlace;
 
@@ -118,11 +119,30 @@ class OrderController extends Controller
         ];
 
         $kurier = new GlobalKurier();
-        $res = $kurier->makeOrder(1, $receptionPlace, $deliverPlace);//TODO kurier_id
+
+//TODO Zrobić tak że jak kurierów nie ma to nie przechodzi zamówienie
+
+        $res = $kurier->makeOrder($this->takeCourier(), $receptionPlace, $deliverPlace);
 
 
         return redirect()->route('home');
     }
 
+
+    public function takeCourier(){
+
+        $kurier = new GlobalKurier();
+
+        $randomKurier = $kurier->pobierzKurierow();
+        $courier = "";
+        foreach($randomKurier as $key => $kurierzy){
+            if($kurierzy->free == 1){
+                $courier = $kurierzy->id;
+                return $courier;
+            }
+        }
+
+        return false;
+    }
 
 }
