@@ -9,7 +9,7 @@
                     <img class="flower-image-details" src="{{$flower->flowerImage}}" alt="{{$flower->name}}">
                     <div class="caption caption-custom">
                         <h1>{{$flower->name}}</h1>
-                            <h3>Cena:</h3>
+                            <h3>Cena: {{$flower->price}}</h3>
                     <div class="button-details">
 
                         <form action="{{route('orderForm')}}" method="GET">
