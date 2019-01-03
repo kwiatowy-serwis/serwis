@@ -5,7 +5,12 @@
 
 @foreach ($flowers_rz as $key => $flower)
 
-        <div class="col-sm-6 col-md-4">
+
+    @if($flower->quantity == 0)
+
+        @else
+
+                <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <img src="{{$flower->flowerImage}}" alt="roza" width="200px" height="200px">
                 <div class="caption">
@@ -23,6 +28,7 @@
                 </p>
             </div>
         </div>
+            @endif
 
 @endforeach
 

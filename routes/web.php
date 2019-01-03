@@ -34,6 +34,8 @@ Route::post('/order/make', 'OrderController@makeOrder')->name('makeOrder');
 
 Route::get('/order/form', 'OrderController@order')->name('orderForm');
 
+Route::get('/apiRefuse', 'MainController@index')->name('apiRefuse');
+
 
 
 

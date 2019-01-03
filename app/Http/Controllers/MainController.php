@@ -12,6 +12,7 @@ class MainController extends Controller
 {
     public function index(Request $request)
     {
+        try{
         $dataManager = new DataManager();
         $flowers_rz = $dataManager->getRzeszowFlowers();
 
@@ -34,10 +35,9 @@ class MainController extends Controller
                 'cityChoice' => $cityChoice,
             ]);
 
-
-
-
-
+        }
+        }catch(\Exception $e){
+            return view('layouts.apiRefuse');
         }
     }
 }

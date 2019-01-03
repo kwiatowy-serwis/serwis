@@ -11,6 +11,7 @@
                     <div class="caption">
                         <h3>{{$flower->name}}</h3>
                         <p>Count: {{$flower->quantity}}</p>
+                        <p>Cena: {{$flower->price}}</p>
                     </div>
                     <p class="button-flower">
                     {{--<a href="{{route('order')}}" class="btn btn-primary" role="button">Kup Teraz</a>--}}
