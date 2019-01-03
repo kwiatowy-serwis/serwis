@@ -20,6 +20,8 @@ Route::get('/', 'MainController@index')->name('welcome');
 
 Route::group(['middleware' => ['auth', 'admin']], function (){
     Route::get('/admin', 'AdminController@index')->name('admin');
+    Route::get('/admin/users', 'AdminController@showUsers')->name('usersAdmin');
+    Route::get('/admin/orders', 'AdminController@showOrders')->name('ordersAdmin');
 
 });
 
