@@ -23,6 +23,11 @@ Route::group(['middleware' => ['auth', 'admin']], function (){
     Route::get('/admin/users', 'AdminController@showUsers')->name('usersAdmin');
     Route::get('/admin/orders', 'AdminController@showOrders')->name('ordersAdmin');
 
+    Route::get('/admin/user/{id}', [
+        'as' => 'userAdmin.show',
+        'uses' => 'AdminController@concreteUser'
+    ]);
+
 });
 
 

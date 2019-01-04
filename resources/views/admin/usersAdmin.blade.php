@@ -9,16 +9,16 @@
                     <tr>
 
                         <th>@sortablelink('id')</th>
-                        <th>@sortablelink('name')</th>
-                        <th>@sortablelink('surname')</th>
-                        <th>@sortablelink('email')</th>
-                        <th>@sortablelink('isAdmin')</th>
-                        <th>@sortablelink('created_at')</th>
+                        <th>@sortablelink('name', 'Imie')</th>
+                        <th>@sortablelink('surname', 'Nazwisko')</th>
+                        <th>@sortablelink('email', 'Email')</th>
+                        <th>@sortablelink('isAdmin', 'Uprawnienia admina')</th>
+                        <th>@sortablelink('created_at', 'Data utworzenia')</th>
                     </tr>
                     @if($users->count())
                         @foreach($users as $key => $user)
                             <tr>
-                                <td>{{$user->id}}</td>
+                                <td><a href="{{route('userAdmin.show', ['id' => $user->id])}}">{{$user->id}}</a></td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->surname}}</td>
                                 <td>{{$user->email}}</td>

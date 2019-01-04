@@ -10,17 +10,17 @@
 
                 <th>@sortablelink('id')</th>
                 <th>@sortablelink('user_id')</th>
-                <th>@sortablelink('ware')</th>
-                <th>@sortablelink('quantity')</th>
-                <th>@sortablelink('price')</th>
-                <th>@sortablelink('firstname')</th>
-                <th>@sortablelink('lastname')</th>
-                <th>@sortablelink('phone')</th>
-                <th>@sortablelink('city')</th>
-                <th>@sortablelink('street')</th>
-                <th>@sortablelink('houseNumber')</th>
-                <th>@sortablelink('zip_code')</th>
-                <th>@sortablelink('created_at')</th>
+                <th>@sortablelink('ware', 'Towar')</th>
+                <th>@sortablelink('quantity', 'Ilość')</th>
+                <th>@sortablelink('price', 'Cena')</th>
+                <th>@sortablelink('firstname', 'Imię')</th>
+                <th>@sortablelink('lastname', 'Nazwisko')</th>
+                <th>@sortablelink('phone', 'Telefon')</th>
+                <th>@sortablelink('city', 'Miasto')</th>
+                <th>@sortablelink('street', 'Ulica')</th>
+                <th>@sortablelink('houseNumber', 'Numer domu')</th>
+                <th>@sortablelink('zip_code', 'Kod pocztowy')</th>
+                <th>@sortablelink('created_at', 'Utworzone')</th>
             </tr>
             @if($flowerOrders->count())
                 @foreach($flowerOrders as $key => $flowerOrder)
