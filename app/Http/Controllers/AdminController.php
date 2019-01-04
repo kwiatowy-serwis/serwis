@@ -17,23 +17,16 @@ class AdminController extends Controller
 
     public function showUsers()
     {
-        $users = User::all();
+        $users = User::sortable()->paginate(5);
+        return view('admin.usersAdmin', compact('users'));
 
-        return view('admin.usersAdmin', [
-            'users' => $users,
-        ]);
     }
 
     public function showOrders(){
 
-
-        $flowerOrders = FlowerOrder::all();
-        $orderPlaces = OrderPlace::all();
-
-        return view('admin.ordersAdmin',[
-           'flowerOrders' => $flowerOrders,
-            'orderPlaces' => $orderPlaces,
-        ]);
+        $orderPlaces = OrderPlace::sortable()->paginate(5);
+        $flowerOrders = FLowerOrder::sortable()->paginate(5);
+        return view('admin.ordersAdmin',compact('flowerOrders','orderPlaces'));
 
     }
 

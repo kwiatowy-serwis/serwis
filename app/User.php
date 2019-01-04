@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Kyslik\ColumnSortable\Sortable;
 
 /**
  * @property mixed isAdmin
@@ -13,6 +14,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    use Sortable;
+
+    public $sortable = ['id','name', 'surname', 'email', 'isAdmin', 'created_at'];
     /**
      * The attributes that are mass assignable.
      *
@@ -38,6 +42,10 @@ class User extends Authenticatable
 
     public function orders(){
         return $this->hasMany('App\FlowerOrder');
+    }
+
+    public function getId(){
+        return $this->id;
     }
 
 
