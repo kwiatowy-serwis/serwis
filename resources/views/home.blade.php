@@ -1,53 +1,49 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-
-    <div class="container">
+    <div class="container-fluid text-center">
         <div class="row">
-            <div class="col-sm-12 col-md-12">
+            <div class="col-sm-12">
                 <h1>Wszystkie zamówienia</h1>
-
-                <table class="table">
-                    <thead>
+                <table class="table table-bordered">
                     <tr>
                         <th>Lp</th>
-                        <th>Towar</th>
-                        <th>Ilość</th>
-                        <th>Cena</th>
-                        <th>Imie</th>
-                        <th>Nazwisko</th>
-                        <th>Telefon</th>
-                        <th>Miasto</th>
-                        <th>Ulica</th>
-                        <th>Numer domu</th>
-                        <th>Kod pocztowy</th>
-                        <th>created_at</th>
+                        <th>@sortablelink('ware', 'Towar')</th>
+                        <th>@sortablelink('quantity', 'Ilość')</th>
+                        <th>@sortablelink('price', 'Cena')</th>
+                        <th>@sortablelink('firstname', 'Imię')</th>
+                        <th>@sortablelink('lastname', 'Nazwisko')</th>
+                        <th>@sortablelink('phone', 'Numer telefonu')</th>
+                        <th>@sortablelink('city', 'Miasto')</th>
+                        <th>@sortablelink('street', 'Ulica')</th>
+                        <th>@sortablelink('houseNumber', 'Numer domu')</th>
+                        <th>@sortablelink('zip_code', 'Kod pocztowy')</th>
+                        <th>@sortablelink('created_at', 'Data złożenia zamówienia')</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                    @if($flowerOrders && $orderPlaces)
-                        @foreach($flowerOrders as $key => $flowerOrder)
-                            @if($user->id == $flowerOrder->user_id)
+                    @foreach($flowerOrders as $key => $flowerOrder)
+                        @if($flowerOrder->user_id == $user->id)
                             <tr>
-                                <td>{{$i++}}</td>
-                                <td>{{$flowerOrder->ware}}</td>
-                                <td>{{$flowerOrder->quantity}}</td>
-                                <td>{{$flowerOrder->price}}</td>
-                                <td>{{$orderPlaces[$key]->firstname}}</td>
-                                <td>{{$orderPlaces[$key]->lastname}}</td>
-                                <td>{{$orderPlaces[$key]->phone}}</td>
-                                <td>{{$orderPlaces[$key]->city}}</td>
-                                <td>{{$orderPlaces[$key]->street}}</td>
-                                <td>{{$orderPlaces[$key]->houseNumber}}</td>
-                                <td>{{$orderPlaces[$key]->zip_code}}</td>
-                                <td>{{$flowerOrder->created_at}}</td>
-
+                                <td>{{ $i++}}</td>
+                                <td>{{ $flowerOrder->ware}}</td>
+                                <td>{{ $flowerOrder->quantity}}</td>
+                                <td>{{ $flowerOrder->price}}</td>
+                                <td>{{ $orderPlaces[$key]->firstname}}</td>
+                                <td>{{ $orderPlaces[$key]->lastname}}</td>
+                                <td>{{ $orderPlaces[$key]->phone}}</td>
+                                <td>{{ $orderPlaces[$key]->city}}</td>
+                                <td>{{ $orderPlaces[$key]->street}}</td>
+                                <td>{{ $orderPlaces[$key]->houseNumber}}</td>
+                                <td>{{ $orderPlaces[$key]->zip_code}}</td>
+                                <td>{{ $flowerOrder->created_at}}</td>
                             </tr>
                         @endif
-                        @endforeach
-                    @endif
-                    </tbody>
+                    @endforeach
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {!! $flowerOrders->appends(\Request::except('page'))->render() !!}
             </div>
         </div>
     </div>

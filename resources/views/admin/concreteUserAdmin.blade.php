@@ -22,8 +22,8 @@
                         <th>@sortablelink('zip_code')</th>
                         <th>@sortablelink('created_at')</th>
                     </tr>
-                        @foreach($flowerOrders as $key => $flowerOrder)
-                            @if($flowerOrder->user_id == $user->id)
+                    @foreach($flowerOrders as $key => $flowerOrder)
+                        @if($flowerOrder->user_id == $user->id)
                             <tr>
                                 <td>{{ $flowerOrder->id }}</td>
                                 <td>{{$flowerOrder->user_id}}</td>
@@ -40,7 +40,7 @@
                                 <td>{{ $flowerOrder->created_at}}</td>
                             </tr>
                         @endif
-                        @endforeach
+                    @endforeach
                 </table>
             </div>
         </div>
