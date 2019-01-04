@@ -7,7 +7,6 @@
                 <h1>Wszyscy użytkownicy</h1>
                 <table class="table table-bordered">
                     <tr>
-
                         <th>@sortablelink('id')</th>
                         <th>@sortablelink('name', 'Imie')</th>
                         <th>@sortablelink('surname', 'Nazwisko')</th>
