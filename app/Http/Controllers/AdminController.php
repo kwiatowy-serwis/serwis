@@ -32,8 +32,8 @@ class AdminController extends Controller
 
     public function concreteUser($id){
         $user = User::findOrFail($id);
-        $orderPlaces = OrderPlace::all();
-        $flowerOrders = FLowerOrder::all();
+        $orderPlaces = OrderPlace::sortable()->paginate(10);
+        $flowerOrders = FLowerOrder::sortable('user_id')->paginate(10);
 
         return view('admin.concreteUserAdmin', compact('user', 'orderPlaces', 'flowerOrders'));
 

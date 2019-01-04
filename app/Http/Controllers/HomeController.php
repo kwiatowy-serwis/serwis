@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use App\FlowerOrder;
+use App\OrderPlace;
+
 class HomeController extends Controller
 {
 
@@ -12,15 +15,19 @@ class HomeController extends Controller
     }
 
 
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('home');
+        $user = Auth()->user();
+        $orderPlaces = OrderPlace::all();
+        $flowerOrders = FLowerOrder::all();
+        $i = 1;
+
+        return view('home', [
+            'user' => $user,
+            'orderPlaces' => $orderPlaces,
+            'flowerOrders' => $flowerOrders,
+            'i' => $i,
+        ]);
     }
 
 }
