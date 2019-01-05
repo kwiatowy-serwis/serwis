@@ -10,6 +10,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class AdminTest extends TestCase
 {
 
+    use RefreshDatabase;
+
     public function getHomeRoute()
     {
         return route('home');
@@ -96,7 +98,7 @@ class AdminTest extends TestCase
 
     public function testCanAdminSeeOrders()
     {
-        $admin = factory(User::class)->make([
+        $admin = factory(User::class)->create([
             'isAdmin' => 1
         ]);
 
@@ -110,7 +112,7 @@ class AdminTest extends TestCase
     public function testCanAdminSeeConcreteUser()
     {
         $user = factory(User::class)->create();
-        $admin = factory(User::class)->make([
+        $admin = factory(User::class)->create([
             'isAdmin' => 1
         ]);
         $userId = $user->id;
@@ -123,7 +125,7 @@ class AdminTest extends TestCase
     public function testCanAdminSeeConcreteUserWhenNotExist()
     {
         $user = factory(User::class)->create();
-        $admin = factory(User::class)->make([
+        $admin = factory(User::class)->create([
             'isAdmin' => 1
         ]);
 
