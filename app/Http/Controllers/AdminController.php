@@ -25,6 +25,7 @@ class AdminController extends Controller
     public function showOrders(){
 
         $flowerOrders = FLowerOrder::sortable()->paginate(5);
+
         return view('admin.ordersAdmin',compact('flowerOrders'));
 
     }

@@ -31,12 +31,19 @@ class HomeTest extends TestCase
         $response->assertRedirect($this->getLoginRoute());
     }
 
-    public function testCanLoggedUserSeeHomePage()
+    public function testCanLoggedUserSeeHomePageAndOrders()
     {
         $user = factory(User::class)->make();
         $response = $this->actingAs($user)->get('/home');
         $response->assertViewIs('home');
+        $data = $response->getOriginalContent()->getData();
+        $this->assertArrayHasKey('flowerOrders', $data);
 
     }
 
+
+
+
+
 }
+
