@@ -24,18 +24,16 @@ class AdminController extends Controller
 
     public function showOrders(){
 
-        $orderPlaces = OrderPlace::sortable()->paginate(5);
         $flowerOrders = FLowerOrder::sortable()->paginate(5);
-        return view('admin.ordersAdmin',compact('flowerOrders','orderPlaces'));
+        return view('admin.ordersAdmin',compact('flowerOrders'));
 
     }
 
     public function concreteUser($id){
         $user = User::findOrFail($id);
-        $orderPlaces = OrderPlace::sortable()->paginate(10);
         $flowerOrders = FLowerOrder::where('user_id','=', $user->id)->sortable('user_id')->paginate(10);
 
-        return view('admin.concreteUserAdmin', compact('user', 'orderPlaces', 'flowerOrders'));
+        return view('admin.concreteUserAdmin', compact('user','flowerOrders'));
 
     }
 

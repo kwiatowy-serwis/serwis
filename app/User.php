@@ -13,8 +13,8 @@ use Kyslik\ColumnSortable\Sortable;
 class User extends Authenticatable
 {
     use Notifiable;
-
     use Sortable;
+
 
     public $sortable = ['id','name', 'surname', 'email', 'isAdmin', 'created_at'];
     /**

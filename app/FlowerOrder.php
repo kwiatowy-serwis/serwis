@@ -10,7 +10,7 @@ class FlowerOrder extends Model
     use Sortable;
 
 
-    public $sortable = ['id','user_id', 'order_place', 'ware', 'quantity', 'price', 'created_at', 'updated_at'];
+   public $sortable = ['id','user_id', 'order_place', 'ware', 'quantity', 'price', 'created_at', 'updated_at'];
 
     public function user()
     {

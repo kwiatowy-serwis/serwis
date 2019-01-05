@@ -17,7 +17,9 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth()->user();
-        $flowerOrders = FlowerOrder::where('user_id','=', $user->id)->sortable()->paginate(5);
+
+        $flowerOrders = FLowerOrder::where('user_id','=', $user->id)->sortable()->paginate(5);
+
         $i = 1;
 
         return view('home', [

@@ -114,6 +114,11 @@
 
 
     </div>
+    <footer style="background-color: grey">
+        <div class="footer-copyright text-center py-3">© 2018 Copyright by Kwiatowy Serwis
+
+        </div>
+    </footer>
 
     </body>
 </html>
