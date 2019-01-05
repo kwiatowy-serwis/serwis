@@ -27,13 +27,13 @@
                                 <td>{{ $flowerOrder->ware}}</td>
                                 <td>{{ $flowerOrder->quantity}}</td>
                                 <td>{{ $flowerOrder->price}}</td>
-                                <td>{{ $orderPlaces[$key]->firstname}}</td>
-                                <td>{{ $orderPlaces[$key]->lastname}}</td>
-                                <td>{{ $orderPlaces[$key]->phone}}</td>
-                                <td>{{ $orderPlaces[$key]->city}}</td>
-                                <td>{{ $orderPlaces[$key]->street}}</td>
-                                <td>{{ $orderPlaces[$key]->houseNumber}}</td>
-                                <td>{{ $orderPlaces[$key]->zip_code}}</td>
+                                <td>{{ $flowerOrder->orderPlace()->firstname}}</td>
+                                <td>{{ $flowerOrder->orderPlace()->lastname}}</td>
+                                <td>{{ $flowerOrder->orderPlace()->phone}}</td>
+                                <td>{{ ucfirst($flowerOrder->orderPlace()->city)}}</td>
+                                <td>{{ $flowerOrder->orderPlace()->street}}</td>
+                                <td>{{ $flowerOrder->orderPlace()->houseNumber}}</td>
+                                <td>{{ $flowerOrder->orderPlace()->zip_code}}</td>
                                 <td>{{ $flowerOrder->created_at}}</td>
                             </tr>
                         @endif

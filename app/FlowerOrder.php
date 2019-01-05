@@ -14,11 +14,11 @@ class FlowerOrder extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User')->first();
     }
 
     public function orderPlace()
     {
-        return $this->belongsTo('App\OrderPlace');
+        return $this->belongsTo('App\OrderPlace')->first();
     }
 }

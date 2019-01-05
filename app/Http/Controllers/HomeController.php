@@ -14,17 +14,14 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-
     public function index()
     {
         $user = Auth()->user();
-        $orderPlaces = OrderPlace::sortable()->paginate(5);
-        $flowerOrders = FLowerOrder::where('user_id','=', $user->id)->sortable()->paginate(5);
+        $flowerOrders = FlowerOrder::where('user_id','=', $user->id)->sortable()->paginate(5);
         $i = 1;
 
         return view('home', [
             'user' => $user,
-            'orderPlaces' => $orderPlaces,
             'flowerOrders' => $flowerOrders,
             'i' => $i,
         ]);
