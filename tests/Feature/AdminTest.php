@@ -124,11 +124,12 @@ class AdminTest extends TestCase
 
     public function testCanAdminSeeConcreteUserWhenNotExist()
     {
-        $user = factory(User::class)->create();
+
         $admin = factory(User::class)->create([
             'isAdmin' => 1
         ]);
 
+        $user = factory(User::class)->create();
         $url = $this->getUsersAdminRoute() . ($user->id + 1);
         $response = $this->actingAs($admin)->get($url);
         $response->assertStatus(404);
