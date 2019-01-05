@@ -38,6 +38,9 @@ class MainController extends Controller
         }
         }catch(\Exception $e){
             return view('layouts.apiRefuse');
+
+
+
         }
     }
 }

@@ -23,7 +23,6 @@ class MainPageTest extends TestCase
     public function testCanSeeMainPage()
     {
         $response = $this->get($this->getMainPageRoute());
-//        $response->assertStatus(200);
         $response->assertViewIs('main');
     }
 
@@ -35,4 +34,29 @@ class MainPageTest extends TestCase
         $response->assertViewIs('main');
     }
 
+
+    public function testCanSeeKrakowFlowers()
+    {
+        $city = 'Kraków';
+        $request = $this->getMainPageRoute() . '?'. http_build_query(['cityName' => $city]);
+
+        $response = $this->get($request);
+        $response->assertViewIs('main-krakow');
+
+        $data = $response->getOriginalContent()->getData();
+        $this->assertArrayHasKey('flowers_kr', $data);
+    }
+
+    public function testLoggedUserCanSeeKrakowFlowers()
+    {
+        $user = factory(User::class)->make();
+        $city = 'Kraków';
+        $request = $this->actingAs($user)->getMainPageRoute() . '?'. http_build_query(['cityName' => $city]);
+
+        $response = $this->get($request);
+        $response->assertViewIs('main-krakow');
+
+        $data = $response->getOriginalContent()->getData();
+        $this->assertArrayHasKey('flowers_kr', $data);
+    }
 }

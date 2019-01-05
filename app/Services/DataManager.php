@@ -65,6 +65,13 @@ class DataManager
     public function getOneRzeszowFlower()
     {
         $flowers = $this->getRzeszowFlowers();
+        foreach ($flowers as $flower)
+        {
+            if($flower->quantity > 1)
+            {
+                return $flower;
+            }
+        }
         return $flowers[0];
     }
 

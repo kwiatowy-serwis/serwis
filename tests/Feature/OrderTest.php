@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\FlowerOrder;
+use App\OrderPlace;
 use App\Services\DataManager;
 use App\User;
 use Tests\TestCase;
@@ -10,6 +12,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class OrderTest extends TestCase
 {
+
+    use RefreshDatabase;
+
     public function getOrderRoute()
     {
         return route('order');
@@ -23,6 +28,17 @@ class OrderTest extends TestCase
     public function getLoginRoute()
     {
         return route('login');
+    }
+
+    public function getHomeRoute()
+    {
+        return route('home');
+    }
+
+    public function getMakeOrderRoute()
+    {
+        return '/order/make';
+        return route('makeOrder');
     }
 
     /**
@@ -152,4 +168,64 @@ class OrderTest extends TestCase
         $response = $this->actingAs($admin)->get($this->getOrderFormRoute(). $query);
         $response->assertRedirect('/');
     }
+
+    public function testUserCanMakeOrder()
+    {
+        $dataManager = new DataManager();
+        $flower = $dataManager->getOneRzeszowFlower();
+
+
+        $firstname = 'Jan';
+        $lastname = 'Kowalski';
+        $phone = '123123123';
+        $city= 'rzeszow';
+        $street = 'Rejtana';
+        $zip_code = '35-345';
+        $houseNumber = '14';
+
+        $quantity = $flower->quantity - 1;
+        $flowerPrice = $flower->price * $quantity;
+        $data = [
+            'flowerId' => $flower->id,
+            'flowerQuantity' => $quantity,
+            'flowerName' => $flower->name,
+            'PriceForFlower' => $flowerPrice,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'phone' => $phone,
+            'city'=> $city,
+            'street' => $street,
+            'zip_code' => $zip_code,
+            'houseNumber' => $houseNumber,
+            'test' => 'true'
+        ];
+
+        $user = factory(User::class)->create();
+
+        $response = $this->actingAs($user)->post($this->getMakeOrderRoute(), $data);
+
+        $response->assertRedirect($this->getHomeRoute());
+
+        $this->assertCount(1, $orders = FlowerOrder::all());
+        $order = $orders->first();
+        $this->assertEquals($flower->name, $order->ware);
+        $this->assertEquals($quantity, $order->quantity);
+        $this->assertEquals($flowerPrice, $order->price);
+
+        $this->assertCount(1, $ordersPlaces = OrderPlace::all());
+        $orderPlace = $ordersPlaces->first();
+        $this->assertEquals($firstname, $orderPlace->firstname);
+        $this->assertEquals($lastname, $orderPlace->lastname);
+        $this->assertEquals($city, $orderPlace->city);
+        $this->assertEquals($street, $orderPlace->street);
+        $this->assertEquals($zip_code, $orderPlace->zip_code);
+        $this->assertEquals($phone, $orderPlace->phone);
+        $this->assertEquals($houseNumber, $orderPlace->houseNumber);
+    }
+
+
+
+
+
+
 }

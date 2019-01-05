@@ -67,6 +67,7 @@ class OrderController extends Controller
 
     public function makeOrder(Request $request)
     {
+
         $flowerId = $request->request->get('flowerId');
         $flowerQuantity = $request->request->get('flowerQuantity');
         $flowerName = $request->request->get('flowerName');
@@ -96,36 +97,34 @@ class OrderController extends Controller
         $inputOrders->save();
 
 
-        if($input->city == "rzeszow") {
-            $kwiaciarnia_rz = new Rzeszow();
-            $res = $kwiaciarnia_rz->makeOrder($flowerId, $flowerQuantity);
-        }else {
-            $kwiaciarnia_rz = new Krakow();
-            $res = $kwiaciarnia_rz->makeOrder($flowerId, $flowerQuantity);
+        if(!$request->test)
+        {
+            if($input->city == "rzeszow") {
+                $kwiaciarnia_rz = new Rzeszow();
+                $res = $kwiaciarnia_rz->makeOrder($flowerId, $flowerQuantity);
+            }else {
+                $kwiaciarnia_rz = new Krakow();
+                $res = $kwiaciarnia_rz->makeOrder($flowerId, $flowerQuantity);
+            }
+
+
+            $receptionPlace = $kwiaciarnia_rz->getCompanyAddress();
+            $receptionPlace = (array) $receptionPlace;
+
+            $deliverPlace = [
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'city' => $request->city,
+                'street' => $request->street,
+                'zip_code' => $request->zip_code,
+                'phone' =>  $request->phone,
+            ];
+
+            $kurier = new GlobalKurier();
+            $res = $kurier->makeOrder($this->takeCourier(), $receptionPlace, $deliverPlace);
         }
 
-
-        $receptionPlace = $kwiaciarnia_rz->getCompanyAddress();
-
-        $receptionPlace = (array) $receptionPlace;
-
-        $deliverPlace = [
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'city' => $request->city,
-            'street' => $request->street,
-            'zip_code' => $request->zip_code,
-            'phone' =>  $request->phone,
-        ];
-
-        $kurier = new GlobalKurier();
-
-//TODO Zrobić tak że jak kurierów nie ma to nie przechodzi zamówienie
-
-        $res = $kurier->makeOrder($this->takeCourier(), $receptionPlace, $deliverPlace);
-
-
-        return redirect()->route('home');
+        return redirect('home');
     }
 
 
